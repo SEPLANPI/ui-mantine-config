@@ -1,4 +1,20 @@
-import { createTheme } from '@mantine/core';
+import { createTheme, defaultVariantColorsResolver, VariantColorsResolver } from '@mantine/core';
+
+/** @type {import('@mantine/core').VariantColorsResolver} */
+const variantColorResolver = (button) => {
+  const defaultResolvedColors = defaultVariantColorsResolver(button);
+
+  if (button.variant === 'default-filled') {
+    return {
+      background: 'var(--mantine-color-gray-2)',
+      color: 'var(--mantine-color-text)',
+      hover: 'var(--mantine-color-gray-3)'
+    }
+  }
+
+
+  return defaultResolvedColors;
+};
 
 export const theme = createTheme({
   scale: 1,
@@ -281,5 +297,6 @@ export const theme = createTheme({
     xl: "0 calc(0.125rem * var(--mantine-scale)) calc(0.375rem * var(--mantine-scale)) rgba(0, 0, 0, 0.1), 0 calc(0.375rem * var(--mantine-scale)) calc(0.75rem * var(--mantine-scale)) rgba(0, 0, 0, 0.2)"
   },
   other: {},
-  components: {}
-});
+  components: {},
+  variantColorResolver: variantColorResolver
+})
