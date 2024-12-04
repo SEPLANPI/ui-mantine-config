@@ -1,14 +1,21 @@
-import { createTheme, defaultVariantColorsResolver, VariantColorsResolver } from '@mantine/core';
+import { Button, createTheme, defaultVariantColorsResolver, VariantColorsResolver } from '@mantine/core';
 
 /** @type {import('@mantine/core').VariantColorsResolver} */
 const variantColorResolver = (button) => {
   const defaultResolvedColors = defaultVariantColorsResolver(button);
 
-  if (button.variant === 'default-filled') {
+  if (button.variant === 'secondary') {
     return {
       background: 'var(--mantine-color-gray-2)',
       color: 'var(--mantine-color-text)',
       hover: 'var(--mantine-color-gray-3)'
+    }
+  }
+  if (button.variant === 'ghost') {
+    return {
+      background: 'transparent',
+      color: 'var(--mantine-color-text)',
+      hover: 'var(--mantine-color-gray-2)'
     }
   }
 
@@ -22,17 +29,22 @@ export const theme = createTheme({
   focusRing: "auto",
   white: "#fff",
   black: "#000",
+
   colors: {
+
     dark: [
       "#C9C9C9",
+
       "#b8b8b8",
       "#828282",
       "#696969",
       "#424242",
+
       "#3b3b3b",
       "#2e2e2e",
       "#242424",
       "#1f1f1f",
+
       "#141414"
     ],
     gray: [
@@ -46,6 +58,7 @@ export const theme = createTheme({
       "#495057",
       "#343a40",
       "#212529"
+
     ],
     red: [
       "#fff5f5",
@@ -61,24 +74,29 @@ export const theme = createTheme({
     ],
     pink: [
       "#fff0f6",
+
       "#ffdeeb",
       "#fcc2d7",
       "#faa2c1",
       "#f783ac",
+
       "#f06595",
       "#e64980",
       "#d6336c",
       "#c2255c",
+
       "#a61e4d"
     ],
     grape: [
       "#f8f0fc",
       "#f3d9fa",
       "#eebefa",
+
       "#e599f7",
       "#da77f2",
       "#cc5de8",
       "#be4bdb",
+
       "#ae3ec9",
       "#9c36b5",
       "#862e9c"
@@ -96,14 +114,17 @@ export const theme = createTheme({
       "#5f3dc4"
     ],
     indigo: [
+
       "#edf2ff",
       "#dbe4ff",
       "#bac8ff",
       "#91a7ff",
+
       "#748ffc",
       "#5c7cfa",
       "#4c6ef5",
       "#4263eb",
+
       "#3b5bdb",
       "#364fc7"
     ],
@@ -123,10 +144,12 @@ export const theme = createTheme({
       "#e3fafc",
       "#c5f6fa",
       "#99e9f2",
+
       "#66d9e8",
       "#3bc9db",
       "#22b8cf",
       "#15aabf",
+
       "#1098ad",
       "#0c8599",
       "#0b7285"
@@ -154,16 +177,20 @@ export const theme = createTheme({
       "#37b24d",
       "#2f9e44",
       "#2b8a3e"
+
     ],
     lime: [
+
       "#f4fce3",
       "#e9fac8",
       "#d8f5a2",
       "#c0eb75",
+
       "#a9e34b",
       "#94d82d",
       "#82c91e",
       "#74b816",
+
       "#66a80f",
       "#5c940d"
     ],
@@ -178,23 +205,28 @@ export const theme = createTheme({
       "#f59f00",
       "#f08c00",
       "#e67700"
+
     ],
     orange: [
       "#fff4e6",
+
       "#ffe8cc",
       "#ffd8a8",
       "#ffc078",
       "#ffa94d",
+
       "#ff922b",
       "#fd7e14",
       "#f76707",
       "#e8590c",
+
       "#d9480f"
     ],
     govBlue: [
       "#e6edf6",
       "#b1c8e2 ",
       "#8BAED4",
+
       "#5688C1",
       "#3571B5",
       "#034EA2",
@@ -214,9 +246,11 @@ export const theme = createTheme({
   fontFamily: "Figtree, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji",
   fontFamilyMonospace: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace",
   respectReducedMotion: false,
+
   cursorType: "default",
   defaultGradient: {
     from: "blue",
+
     to: "cyan",
     deg: 45
   },
@@ -235,6 +269,7 @@ export const theme = createTheme({
       h2: {
         fontSize: "calc(1.625rem * var(--mantine-scale))",
         lineHeight: "1.35"
+
       },
       h3: {
         fontSize: "calc(1.375rem * var(--mantine-scale))",
@@ -252,6 +287,7 @@ export const theme = createTheme({
         fontSize: "calc(0.875rem * var(--mantine-scale))",
         lineHeight: "1.5"
       }
+
     }
   },
   fontSizes: {
@@ -277,6 +313,7 @@ export const theme = createTheme({
   },
   spacing: {
     xs: "calc(0.625rem * var(--mantine-scale))",
+
     sm: "calc(0.75rem * var(--mantine-scale))",
     md: "calc(1rem * var(--mantine-scale))",
     lg: "calc(1.25rem * var(--mantine-scale))",
@@ -285,6 +322,7 @@ export const theme = createTheme({
   breakpoints: {
     xs: "36em",
     sm: "48em",
+
     md: "62em",
     lg: "75em",
     xl: "88em"
@@ -297,6 +335,15 @@ export const theme = createTheme({
     xl: "0 calc(0.125rem * var(--mantine-scale)) calc(0.375rem * var(--mantine-scale)) rgba(0, 0, 0, 0.1), 0 calc(0.375rem * var(--mantine-scale)) calc(0.75rem * var(--mantine-scale)) rgba(0, 0, 0, 0.2)"
   },
   other: {},
-  components: {},
+  components: {
+
+    Button: Button.extend({
+      classNames: {
+
+      }
+    })
+  },
   variantColorResolver: variantColorResolver
 })
+
+
