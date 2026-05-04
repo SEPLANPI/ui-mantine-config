@@ -1,17 +1,22 @@
 import { DefaultMantineColor, MantineColorsTuple, MantineThemeOverride } from '@mantine/core';
 
+/**
+ * Declaração do módulo da sua biblioteca de configuração
+ */
 declare module "@ui/mantine-config" {
-  export const theme: MantineThemeOverride
-
+  export const theme: MantineThemeOverride;
 }
 
-
-type ExtendedCustomColors =
-  | 'govBlue'
-  | DefaultMantineColor;
-
+/**
+ * Extensão dos tipos nativos do Mantine para reconhecer 'govBlue' 
+ * e garantir que o autocomplete funcione em todo o projeto.
+ */
 declare module '@mantine/core' {
-  export interface MantineThemeColorsOverride {
-    colors: Record<ExtendedCustomColors, MantineColorsTuple>;
+  export interface MantineCustomColors {
+    // Adicione aqui outras cores caso crie novas paletas no futuro
+    govBlue: MantineColorsTuple;
   }
+
+  // Isso permite que 'govBlue' seja usado em props como color="govBlue"
+  export type MantineColors = DefaultMantineColor | keyof MantineCustomColors;
 }
