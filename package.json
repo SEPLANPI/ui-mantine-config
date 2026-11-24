@@ -1,7 +1,7 @@
 {
   "name": "@ui/mantine-config",
-  "version": "1.2.1",
-  "description": "",
+  "version": "1.3.0",
+  "description": "Tema Mantine padrão dos fronts da SEPLAN (cores, govBlue, tipografia e variantes de botão).",
   "main": "src/index.js",
   "types": "src/types.d.ts",
   "scripts": {
