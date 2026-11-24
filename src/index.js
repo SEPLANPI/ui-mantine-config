@@ -1,4 +1,4 @@
-import { Button, createTheme, defaultVariantColorsResolver, VariantColorsResolver } from '@mantine/core';
+import { Button, createTheme, defaultVariantColorsResolver } from '@mantine/core';
 
 /** @type {import('@mantine/core').VariantColorsResolver} */
 const variantColorResolver = (button) => {
