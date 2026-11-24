@@ -1,0 +1,45 @@
+name: Verificar compatibilidade
+
+# O tema é usado por vários fronts, em versões diferentes do Mantine.
+# Cada PR é checado contra todas as versões aceitas no peerDependencies.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  mantine:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - mantine: 7
+            react: 18
+          - mantine: 8
+            react: 19
+          - mantine: 9
+            react: 19
+    name: Mantine ${{ matrix.mantine }} + React ${{ matrix.react }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Instalar a versão da matriz
+        run: >
+          pnpm add -D
+          @mantine/core@${{ matrix.mantine }}
+          @mantine/hooks@${{ matrix.mantine }}
+          react@${{ matrix.react }}
+          react-dom@${{ matrix.react }}
+          @types/react@${{ matrix.react }}
+      - run: pnpm check
