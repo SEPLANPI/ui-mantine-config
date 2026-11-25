@@ -1,0 +1,15 @@
+{
+  // Só para checagem (`pnpm check`): o pacote é publicado como JS + .d.ts.
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "noEmit": true,
+    "strict": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "target": "es2022",
+    "jsx": "react-jsx",
+    "skipLibCheck": true
+  },
+  "include": ["src", "scripts/tipos.ts"]
+}

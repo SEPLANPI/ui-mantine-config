@@ -1,5 +1,6 @@
-import { Button, createTheme, defaultVariantColorsResolver, VariantColorsResolver } from '@mantine/core';
+import { Button, createTheme, defaultVariantColorsResolver, rem } from '@mantine/core';
 
+// `border` igual ao padrão do Mantine 7/8/9 (o tipo exige o campo).
 /** @type {import('@mantine/core').VariantColorsResolver} */
 const variantColorResolver = (button) => {
   const defaultResolvedColors = defaultVariantColorsResolver(button);
@@ -8,14 +9,16 @@ const variantColorResolver = (button) => {
     return {
       background: 'var(--mantine-color-gray-2)',
       color: 'var(--mantine-color-text)',
-      hover: 'var(--mantine-color-gray-3)'
+      hover: 'var(--mantine-color-gray-3)',
+      border: `${rem(1)} solid transparent`
     }
   }
   if (button.variant === 'ghost') {
     return {
       background: 'transparent',
       color: 'var(--mantine-color-text)',
-      hover: 'var(--mantine-color-gray-2)'
+      hover: 'var(--mantine-color-gray-2)',
+      border: `${rem(1)} solid transparent`
     }
   }
 
